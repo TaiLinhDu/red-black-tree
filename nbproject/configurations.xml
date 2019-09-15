@@ -4,6 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>MYERROR_H.h</itemPath>
+      <itemPath>node.h</itemPath>
+      <itemPath>red-black-tree.h</itemPath>
+      <itemPath>telefon-book.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -13,6 +17,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.cpp</itemPath>
+      <itemPath>red-black-tree.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -36,7 +41,17 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="MYERROR_H.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="node.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="red-black-tree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="red-black-tree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="telefon-book.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -59,7 +74,17 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="MYERROR_H.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="node.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="red-black-tree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="red-black-tree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="telefon-book.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
