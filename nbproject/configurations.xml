@@ -40,6 +40,9 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
       </compileType>
       <item path="MYERROR_H.h" ex="false" tool="3" flavor2="0">
       </item>
