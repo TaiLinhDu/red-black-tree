@@ -36,7 +36,9 @@ int main(int argc, char** argv) {
     rbt1.level_order(rbt1.getRoot());
     
     
-    bool removeNode = rbt1.removeNode(rbt1.findByKey(20,rbt1.getRoot()));
+    rbt1.removeNode(rbt1.findByKey(20,rbt1.getRoot())); // ???
+    // rbt1.removeNode(rbt1.findByKey(40,rbt1.getRoot()));
+    //rbt1.removeNode(rbt1.findByKey(30,rbt1.getRoot()));
     
     rbt1.level_order(rbt1.getRoot());
 
