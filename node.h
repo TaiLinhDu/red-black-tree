@@ -58,6 +58,14 @@ template<class T1,class T2> struct Node {
     
     // check if node is left child of parent 
     bool isOnRight() { return this == parent->right; } 
+    
+    /* find the node with min key */
+    Node<T1,T2>* minKeyNode(Node<T1,T2>* node) 
+    { 
+        while (node && node->left != NULL) 
+            node = node->left; 
+        return node; 
+    } 
 };
 
 #endif	/* NODE_H */
