@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>MYERROR_H.h</itemPath>
       <itemPath>node.h</itemPath>
+      <itemPath>read-telefon-book-csv-file.h</itemPath>
       <itemPath>red-black-tree.h</itemPath>
       <itemPath>telefon-book.h</itemPath>
     </logicalFolder>
@@ -50,6 +51,8 @@
       </item>
       <item path="node.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="read-telefon-book-csv-file.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="red-black-tree.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="red-black-tree.h" ex="false" tool="3" flavor2="0">
@@ -82,6 +85,8 @@
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="node.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="read-telefon-book-csv-file.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="red-black-tree.cpp" ex="false" tool="1" flavor2="0">
       </item>

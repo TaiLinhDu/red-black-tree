@@ -14,10 +14,17 @@ using namespace std;
 
 class TelefonBook {
     public:
-        string phoneNumber;
         string lastName;
         string firstName;
+        string companyName;
         string address;
+        string city;
+        string state;
+        string post;
+        string phone1;
+        string phone2;
+        string email;
+        string web;
 };
 
 #endif	/* TELEFON_BOOK_H */
