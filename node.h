@@ -34,7 +34,7 @@ template<class T1,class T2> struct Node {
     
     Node<T1,T2>* findUncle(){
        
-       if (parent == nullptr || parent->parent == nullptr){
+       if (parent == nullptr || (parent != nullptr && parent->parent == nullptr)){
            return nullptr; 
        }
          

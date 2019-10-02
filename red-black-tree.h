@@ -331,6 +331,11 @@ bool RedBlackTree<T1,T2>::removeNodeWithoutCareAboutColor(Node<T1,T2>* node){
     Node<T1,T2>* parentNodeOfSelectedNote = nullptr;
     bool isSelectedNodeOnTheLeft = false;
     
+    // node does not exist
+    if(node == nullptr){
+        return false;
+    }
+    
     //---------------- deleted node does not have child ------------------------
     if (node->left == nullptr && node->right == nullptr){
         if(node->parent != nullptr){
@@ -382,6 +387,7 @@ bool RedBlackTree<T1,T2>::removeNodeWithoutCareAboutColor(Node<T1,T2>* node){
                 }
             }else {
                 root = node->left;
+                node->left->parent = nullptr;
             }
             
         } else { // node->right != nullptr
@@ -400,6 +406,7 @@ bool RedBlackTree<T1,T2>::removeNodeWithoutCareAboutColor(Node<T1,T2>* node){
                 }
             } else {
                 root = node->right;
+                node->right->parent = nullptr;
             }
         }
         
@@ -417,9 +424,14 @@ bool RedBlackTree<T1,T2>::removeNodeWithoutCareAboutColor(Node<T1,T2>* node){
             if(newNode != node->right){
                 newNode->right = node->right;
                 newNode->parent->left = nullptr;
+                
+                node->right->parent = newNode;
             
-            } else 
+            } else {
                 newNode->right = nullptr;
+                newNode->parent->right = nullptr;
+            }
+                
             
         // min key Node have one child
         } else { //newNode->right != nullptr
@@ -429,6 +441,8 @@ bool RedBlackTree<T1,T2>::removeNodeWithoutCareAboutColor(Node<T1,T2>* node){
                 (newNode->parent)->left = newNode->right;
                 (newNode->right)->parent = newNode->parent;
                 
+                node->right->parent = newNode;
+                
                 newNode->right = node->right;
             } else { // newNode is right child of node
                 //nothing happend
@@ -436,22 +450,30 @@ bool RedBlackTree<T1,T2>::removeNodeWithoutCareAboutColor(Node<T1,T2>* node){
         }
         
         newNode->left = node->left;
+        node->left->parent = newNode;
 
         newNode->parent = node->parent;
+        
+
+        
         if(node->parent == nullptr){
             root = newNode;
         } else {
             if (node->isOnLeft()){
                 (node->parent)->left = newNode;
-                 isSelectedNodeOnTheLeft = true;
             } else
                 (node->parent)->right = newNode;
         }
         
         replacementNode = newNode;
         selectedXNode = newNode->right;
+        isSelectedNodeOnTheLeft = false;
         siblingOfSelectedXNode = newNode->left;
-        parentNodeOfSelectedNote = selectedXNode->parent;
+        
+        if (selectedXNode != nullptr)
+            parentNodeOfSelectedNote = selectedXNode->parent;
+        else 
+            parentNodeOfSelectedNote = newNode;
     }
             
     handleCasesWhenRemoveNode(node,replacementNode,selectedXNode,siblingOfSelectedXNode,parentNodeOfSelectedNote,isSelectedNodeOnTheLeft);
@@ -465,7 +487,8 @@ bool RedBlackTree<T1,T2>::removeNodeWithoutCareAboutColor(Node<T1,T2>* node){
 template<class T1,class T2>
 bool RedBlackTree<T1,T2>::removeNode(Node<T1,T2>* node){
     
-    removeNodeWithoutCareAboutColor(node);
+    return removeNodeWithoutCareAboutColor(node);
+    
     
     
 }
@@ -519,14 +542,17 @@ void RedBlackTree<T1,T2>::handle4CaseWhenRemoveNode(
         siblingOfSelectedXNode->nodeColor = BLACK;
         parentNodeOfSelectedNote->nodeColor = RED;
         
-        if (selectedXNode->isOnLeft()){
-            
-            rotateL(parentNodeOfSelectedNote);
-            siblingOfSelectedXNode = parentNodeOfSelectedNote->right;
-                    
-        } else {
-            rotateR(parentNodeOfSelectedNote);
-            siblingOfSelectedXNode = parentNodeOfSelectedNote->left;
+        if(  parentNodeOfSelectedNote != nullptr){
+
+            if (isSelectedNodeOnTheLeft){
+
+                rotateL(parentNodeOfSelectedNote);
+                siblingOfSelectedXNode = parentNodeOfSelectedNote->right;
+
+            } else {
+                rotateR(parentNodeOfSelectedNote);
+                siblingOfSelectedXNode = parentNodeOfSelectedNote->left;
+            }
         }
     }   
 
@@ -551,10 +577,13 @@ void RedBlackTree<T1,T2>::handle4CaseWhenRemoveNode(
             selectedXNode->nodeColor = BLACK;
         } else {
             // set new sibling (w))
-            if(selectedXNode->isOnLeft()){
-                siblingOfSelectedXNode = parentNodeOfSelectedNote->right;
-            } else {
-                    siblingOfSelectedXNode = parentNodeOfSelectedNote->left;
+            if (parentNodeOfSelectedNote != nullptr ){
+
+                if(isSelectedNodeOnTheLeft){
+                    siblingOfSelectedXNode = parentNodeOfSelectedNote->right;
+                } else {
+                        siblingOfSelectedXNode = parentNodeOfSelectedNote->left;
+                }
             }
             handle4CaseWhenRemoveNode(node,replacementNode,selectedXNode,siblingOfSelectedXNode,parentNodeOfSelectedNote,isSelectedNodeOnTheLeft);
         }
